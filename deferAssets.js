@@ -89,7 +89,7 @@
                     switch (asset.tag) {
                     case 'script':
                         e = w.document.createElement("script");
-                        e.src = asset.url + '?time=' + Date.now();
+                        e.src = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
                         e.async = 'async';
                         e.type = asset.type;
                         break;
@@ -97,11 +97,11 @@
                         e = w.document.createElement("link");
                         e.rel = 'stylesheet';
                         e.type = 'text/css';
-                        e.href = asset.url;
+                        e.href = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
                         break;
                     case 'img':
                         e = w.document.createElement('img');
-                        e.src = asset.url;
+                        e.src = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
                         break;
                     default:
                         return;
