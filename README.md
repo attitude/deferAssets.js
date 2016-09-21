@@ -43,6 +43,7 @@ Optional:
 - *(string)* `require`: loads only after required resource finished loading
 - *(function)* `done`: runs when asset is successfully loaded
 - *(function)* `mount`: runs when asset is attached to DOM (not yet loaded)
+- *(boolean)* `timestamp`: whether to timestamp request with `time`
 
 
 A script by [@martin_adamko](https://twitter.com/martin_adamko)

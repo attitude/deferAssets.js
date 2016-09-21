@@ -89,7 +89,11 @@
                     switch (asset.tag) {
                     case 'script':
                         e = w.document.createElement("script");
-                        e.src = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
+                        if (asset.timestamp) {
+                            e.src = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
+                        } else {
+                            e.src = asset.url;
+                        }
                         e.async = 'async';
                         e.type = asset.type;
                         break;
@@ -97,11 +101,19 @@
                         e = w.document.createElement("link");
                         e.rel = 'stylesheet';
                         e.type = 'text/css';
-                        e.href = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
+                        if (asset.timestamp) {
+                            e.href = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
+                        } else {
+                            e.href = asset.url;
+                        }
                         break;
                     case 'img':
                         e = w.document.createElement('img');
-                        e.src = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
+                        if (asset.timestamp) {
+                            e.src = asset.url + (asset.url.match(/\?/) ? '&time=' : '?time') + Date.now();
+                        } else {
+                            e.src = asset.url;
+                        }
                         break;
                     default:
                         return;
